@@ -1,0 +1,18 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="/static/images/master.png" class="img-fluid d-block mx-auto"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>This is the Contact page.</h1>
+            <p>This came from the template: {{index .StringMap "test"}}</p>
+            <a href="/reserve/master">Check Availability</a>
+        </div>
+    </div>
+</div>
+{{end}}
