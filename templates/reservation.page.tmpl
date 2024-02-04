@@ -1,0 +1,36 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="/static/images/master.png" class="img-fluid d-block mx-auto"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>This is the Contact page.</h1>
+                <form action="/reservation" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="start_date" class="form-label">Starting Date</label>
+                                <input required type="date" class="form-control" name="start_date" id="start_date">
+                                <div id="emailHelp" class="form-text">Enter your starting date.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="end_date" class="form-label">Starting Date</label>
+                                <input required type="date" class="form-control" name="end_date" id="end_date">
+                                <div id="emailHelp" class="form-text">Enter your end date.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Search Availability</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{end}}

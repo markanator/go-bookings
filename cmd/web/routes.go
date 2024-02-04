@@ -19,6 +19,9 @@ func routes(app *config.AppConfig) http.Handler {
 	// define application routes
 	mux.Get("/", handlers.Repo.HomeHandler)
 	mux.Get("/about", handlers.Repo.AboutHandler)
+	mux.Get("/contact", handlers.Repo.ContactHandler)
+	mux.Get("/reservation", handlers.Repo.ShowReservation)
+	mux.Post("/reservation", handlers.Repo.SearchReservations)
 
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))

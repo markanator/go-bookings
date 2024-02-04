@@ -46,3 +46,18 @@ func (m *Repository) AboutHandler(w http.ResponseWriter, r *http.Request) {
 		StringMap: stringMap,
 	})
 }
+
+// ShowReservation renders the make a reservation page
+func (m *Repository) ContactHandler(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+}
+
+// ShowReservation renders the make a reservation page
+func (m *Repository) ShowReservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
+}
+
+// SearchReservations action handler
+func (m *Repository) SearchReservations(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
+}
