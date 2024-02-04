@@ -177,31 +177,41 @@
           msg = "",
           title = ""
         } = c;
-        const { value: formValues } = await Swal.fire({
+        const results = await Swal.fire({
           title,
           html: msg,
           backdrop: false,
           focusConfirm: false,
+          showCancelButton: true,
           willOpen: () => {
-            const el = document.getElementById("reservation-dates-modal");
-            new DateRangePicker(el, {
-              format: "yyyy-mm-dd",
-              showOnFocus: true,
-            });
-          },
-          didOpen: () => {
-            document.getElementById("start-modal").removeAttribute('disabled');
-            document.getElementById("end-modal").removeAttribute('disabled');
+            c?.willOpen?.();
           },
           preConfirm: () => {
             return [
               document.getElementById("start-modal").value,
               document.getElementById("end-modal").value
             ];
-          }
+          },
+          didOpen: () => {
+            c?.didOpen?.();
+          },
         });
-        if (formValues) {
-          Swal.fire(JSON.stringify(formValues));
+        if (results) {
+          if (!results.isDismissed){
+            if (results.value?.some(v => Boolean(v))) {
+              // there is something in the array
+              if (c?.callback !== undefined) {
+                // let's do this
+                c.callback(results);
+              }
+            } else {
+              // empty arr
+              c?.callback?.(false);
+            }
+          } else {
+            // we canceled
+            c?.callback?.(false);
+          }
         }
 
       }

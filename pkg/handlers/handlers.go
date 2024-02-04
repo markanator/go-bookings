@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/markanator/go-bookings/pkg/models"
 	"log"
@@ -65,6 +66,27 @@ func (m *Repository) StoreSearchAvailability(w http.ResponseWriter, r *http.Requ
 	end := r.Form.Get("end")
 	fmt.Println(start, end)
 	_, err := w.Write([]byte("search availability, start: " + start + " end: " + end))
+	if err != nil {
+		log.Fatal("Error writing template:", err)
+	}
+}
+
+type jsonResponse struct {
+	Ok      bool   `json:"ok"`
+	Message string `json:"message"`
+}
+
+// ShowReservation renders the make a reservation page
+func (m *Repository) StoreSearchAvailabilityJson(w http.ResponseWriter, r *http.Request) {
+	resp := jsonResponse{
+		Ok:      true,
+		Message: "Available!",
+	}
+	out, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatal("Error writing template:", err)
+	}
+	_, err = w.Write(out)
 	if err != nil {
 		log.Fatal("Error writing template:", err)
 	}

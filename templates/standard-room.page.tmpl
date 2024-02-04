@@ -20,7 +20,7 @@
     <script>
         document.getElementById("check-availability").addEventListener('click', ()=>{
             const html = `
-<form action="/reservation" novalidate class="needs-validation modal-form" method="post">
+<form id="check-availability-form" method="post" action="" novalidate class="needs-validation modal-form">
     <div class="row">
         <div class="col">
             <div class="row" id="reservation-dates-modal">
@@ -38,7 +38,39 @@
         </div>
     </div>
 </form>`;
-            attention.custom({ msg: html, title: "choose dates" });
+            attention.custom({
+                msg: html,
+                title: "choose dates",
+                willOpen: () => {
+                    const el = document.getElementById("reservation-dates-modal");
+                    new DateRangePicker(el, {
+                        format: "yyyy-mm-dd",
+                        showOnFocus: true,
+                    });
+                },
+                didOpen: () => {
+                    document.getElementById("start-modal").removeAttribute('disabled');
+                    document.getElementById("end-modal").removeAttribute('disabled');
+                },
+                callback: async (values) => {
+                    if (values !== false) {
+                        const form = document.getElementById("check-availability-form");
+                        const formData = new FormData(form);
+                        formData.append('csrf_token', "{{.CSRFToken}}")
+                        try {
+                            const data = await fetch("/search-availability-json", {
+                                method: 'POST',
+                                body: formData,
+                            })
+                                .then((res) => res.json());
+                            console.log("data:", data);
+                        } catch (e) {
+                            console.log(e);
+                        }
+
+                    }
+                }
+            });
         })
 
     </script>
