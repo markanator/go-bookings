@@ -14,15 +14,11 @@
 {{define "content"}}
     <div class="container my-5">
         <div class="row">
-            <div class="col">
-                {{/*                <img src="/static/images/master.png" class="img-fluid d-block mx-auto" alt="" height="400"/>*/}}
-            </div>
-        </div>
-        <div class="row">
             <div class="col-3"></div>
             <div class="col">
                 <h1>Check Reservations</h1>
-                <form action="/reservation" novalidate class="needs-validation" method="post">
+                <form method="post" action="/search-availability" novalidate class="needs-validation" >
+                    <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
                     <div class="row">
                         <div class="col">
 
