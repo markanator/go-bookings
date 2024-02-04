@@ -3,13 +3,12 @@ package render
 import (
 	"bytes"
 	"github.com/justinas/nosurf"
+	"github.com/markanator/go-bookings/internal/config"
+	"github.com/markanator/go-bookings/internal/models"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
-
-	"github.com/markanator/go-bookings/pkg/config"
-	"github.com/markanator/go-bookings/pkg/models"
 )
 
 var app *config.AppConfig

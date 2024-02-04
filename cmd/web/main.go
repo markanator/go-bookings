@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"github.com/alexedwards/scs/v2"
+	"github.com/markanator/go-bookings/internal/config"
+	"github.com/markanator/go-bookings/internal/handlers"
+	"github.com/markanator/go-bookings/internal/render"
 	"log"
 	"net/http"
 	"time"
-
-	"github.com/markanator/go-bookings/pkg/config"
-	"github.com/markanator/go-bookings/pkg/handlers"
-	"github.com/markanator/go-bookings/pkg/render"
 )
 
 const portNumber = ":8080"

@@ -3,12 +3,11 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/markanator/go-bookings/pkg/models"
+	"github.com/markanator/go-bookings/internal/config"
+	"github.com/markanator/go-bookings/internal/models"
+	"github.com/markanator/go-bookings/internal/render"
 	"log"
 	"net/http"
-
-	"github.com/markanator/go-bookings/pkg/config"
-	"github.com/markanator/go-bookings/pkg/render"
 )
 
 type Repository struct {
