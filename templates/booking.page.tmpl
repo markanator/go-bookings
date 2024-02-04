@@ -1,0 +1,36 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="/static/images/master.png" class="img-fluid d-block mx-auto"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>This is the Contact page.</h1>
+                <form action="/booking" method="post">
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input required type="text" class="form-control" name="first_name" id="first_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input required type="text" class="form-control" name="last_name" id="last_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input required type="email" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input required type="text" class="form-control" name="phone" id="phone">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Search Availability</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{{end}}

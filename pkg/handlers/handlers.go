@@ -61,3 +61,13 @@ func (m *Repository) ShowReservation(w http.ResponseWriter, r *http.Request) {
 func (m *Repository) SearchReservations(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
 }
+
+// ShowBooking renders the make a reservation page
+func (m *Repository) ShowBooking(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "booking.page.tmpl", &models.TemplateData{})
+}
+
+// StoreBooking action handler
+func (m *Repository) StoreBooking(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "booking.page.tmpl", &models.TemplateData{})
+}
