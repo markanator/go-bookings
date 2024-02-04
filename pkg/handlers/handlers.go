@@ -53,21 +53,21 @@ func (m *Repository) ContactHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // ShowReservation renders the make a reservation page
-func (m *Repository) ShowReservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
+func (m *Repository) ShowSearchAvailability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
+}
+
+// ShowStandardRoom renders the make a reservation page
+func (m *Repository) ShowStandardRoom(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "standard-room.page.tmpl", &models.TemplateData{})
+}
+
+// ShowStandardRoom renders the make a reservation page
+func (m *Repository) ShowMasterRoom(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "master-room.page.tmpl", &models.TemplateData{})
 }
 
 // SearchReservations action handler
-func (m *Repository) SearchReservations(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
-}
-
-// ShowBooking renders the make a reservation page
-func (m *Repository) ShowBooking(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "booking.page.tmpl", &models.TemplateData{})
-}
-
-// StoreBooking action handler
-func (m *Repository) StoreBooking(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "booking.page.tmpl", &models.TemplateData{})
+func (m *Repository) ShowMakeReservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
 }

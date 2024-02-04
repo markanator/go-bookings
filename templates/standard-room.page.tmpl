@@ -1,0 +1,45 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="/static/images/standard.png" class="img-fluid d-block mx-auto" alt="masters bedroom"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>This is the Standard Room Page.</h1>
+                <p>This came from the template: {{index .StringMap "test"}}</p>
+                <a id="check-availability" href="#!">Check Availability</a>
+            </div>
+        </div>
+    </div>
+{{end}}
+{{define "js"}}
+    <script>
+        document.getElementById("check-availability").addEventListener('click', ()=>{
+            const html = `
+<form action="/reservation" novalidate class="needs-validation modal-form" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="row" id="reservation-dates-modal">
+                <div class="col">
+                    <label for="start-modal" class="form-label">Arrival Date</label>
+                    <input disabled required placeholder="Choose arrival date" type="text" name="start" id="start-modal"
+                           class="form-control">
+                </div>
+                <div class="col">
+                    <label for="end-modal" class="form-label">Departure Date</label>
+                    <input disabled required placeholder="Choose departure date" type="text" name="end" id="end-modal"
+                           class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>`;
+            attention.custom({ msg: html, title: "choose dates" });
+        })
+
+    </script>
+{{end}}
